@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>送给你们的福利</title>
+		<style type="text/css">
+			.fdj{
+				width: 800px;
+				height: auto;
+				margin: 0 auto;
+				border: 1px solid #ccc;
+				display: flex;
+			}
+			.left{
+				width: 400px;
+				height: 640px;
+				background-image: url(img/ac012b57e8_1044.jpg);
+				background-size: 100% 100%;
+				position: relative;
+			}
+			.zhezhao{
+				width: 200px;
+				height: 320px;
+				position: absolute;
+				background-color: rgba(0,0,0,0.2);
+				display:none;
+			}
+			.right{
+				width: 400px;
+				height: 640px;
+				/* display: none; */
+				background-image: url(img/ac012b57e8_1044.jpg);
+				background-size: 200% 200%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="fdj">
+			<div class="left">
+				<div class="zhezhao"></div>
+			</div>
+			<div class="right"></div>
+		</div>
+		<script type="text/javascript">
+			var zhezhao = document.querySelector('.zhezhao')
+			var right = document.querySelector('.right')
+			var left = document.querySelector('.left')
+			var fdj = document.querySelector('.fdj')
+			//移入将遮罩显示,背景图片显示
+			left.onmouseenter=function(){
+				zhezhao.style.display = "block"
+				right.style.display = "block"
+				
+			}
+			//移出将遮罩消失，背景图片消失
+			left.onmouseleave = function(){
+				zhezhao.style.display = "none"
+				right.style.display = 'none'
+			}
+			left.onmousemove = function(event){
+				console.log(event)
+					x = event.pageX - fdj.offsetLeft - 100;
+					y = event.pageY - fdj.offsetTop - 150;
+					
+					if(x<0){
+						x = 0;
+					}
+					
+					if(x>200){
+						x = 200;
+					}
+					
+					
+					if(y<0){
+						y = 0
+					}
+					
+					if(y>320){
+						y = 320
+					}
+					zhezhao.style.left = x + 'px';
+					zhezhao.style.top = y + 'px';
+					
+					right.style.backgroundPositionX = - (2 * x) + 'px';
+					right.style.backgroundPositionY = - (2 * y) + 'px';
+				}
+		</script>
+	</body>
+</html>
